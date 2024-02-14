@@ -112,6 +112,17 @@ int main()
 void removeUntil(Stack *s, int value)
 {
 /* add your code here */
+	if (s == NULL)
+		return;
+
+	else {
+		while((s->ll).size > 0) {
+			if (pop(s) == value) {
+				push(s, value);
+				break;
+			}
+		}
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////

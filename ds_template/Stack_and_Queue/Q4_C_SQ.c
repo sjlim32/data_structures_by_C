@@ -55,6 +55,7 @@ ListNode * findNode(LinkedList *ll, int index);
 int insertNode(LinkedList *ll, int index, int value);
 int removeNode(LinkedList *ll, int index);
 void removeAllItems(LinkedList *ll);
+void removeAllItemsFromStack(Stack *s);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -66,9 +67,9 @@ int main()
     Queue q;
 
     //initialize the queue
-	q.ll.head =NULL;
-	q.ll.size =0;
-	q.ll.tail=NULL;
+		q.ll.head =NULL;
+		q.ll.size =0;
+		q.ll.tail=NULL;
 
     c =1;
 
@@ -113,6 +114,24 @@ int main()
 void reverse(Queue *q)
 {
 /* add your code here */
+	Stack s;
+	s.ll.head =NULL;
+	s.ll.size =0;
+	s.ll.tail=NULL;
+
+	if (q == NULL)
+		return;
+
+	else {
+		if(!(isEmptyStack(&s)))
+			removeAllItemsFromStack(&s);
+
+		while((q->ll).head != NULL)
+			push(&s, dequeue(q));
+
+		while(((&s)->ll).head != NULL)
+			enqueue(q, pop(&s));
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,6 +175,16 @@ int isEmptyQueue(Queue *q){
    if ((q->ll).size == 0)
       return 1;
    return 0;
+}
+
+void removeAllItemsFromStack(Stack *s)
+{
+	if (s == NULL)
+		return;
+	while (s->ll.head != NULL)
+	{
+		pop(s);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////
