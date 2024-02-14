@@ -87,6 +87,40 @@ int main()
 void moveOddItemsToBack(LinkedList *ll)
 {
 	/* add your code here */
+	/*
+	"먼저 홀수 숫자의 개수를 세어 count에 저장하고, count만큼 반복하면서 각 반복마다 마지막 요소를 옮기세요. 
+	중요한 점은 각 반복에서 temp와 count를 초기화해야 한다는 것입니다."
+	*/
+	
+	ListNode *cur = ll->head;
+	int count = 0, temp = 0, index = 0;
+
+	if (ll == NULL)
+		return;
+
+	while (cur != NULL) {
+		if (cur->item % 2 != 0) {
+			count+=1;
+		}
+		cur = cur->next;
+	}
+
+	cur = ll->head;
+	while (count > 0 && cur != NULL) {
+		if (cur->item % 2 != 0) {
+			temp = cur->item;
+			cur = cur->next;
+			removeNode(ll, index);
+			insertNode(ll, ll->size, temp);
+			--count;
+		}
+		else {
+			cur = cur->next;
+			index+=1;
+		}
+	}
+
+	return;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
