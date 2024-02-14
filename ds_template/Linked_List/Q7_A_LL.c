@@ -88,6 +88,26 @@ int main()
 void RecursiveReverse(ListNode **ptrHead)
 {
 	/* add your code here */
+	/*
+	이 함수는 두 개의 ListNode 포인터를 받아서, 만약 NULL 이 있다면 반환
+	재귀 호출을 통해 rest에 대한 처리를 진행.
+	- 첫번째 노드의 다음 다음 노드를 첫번째 노드로 설정,
+	- 첫번째 노드의 다음 노드를 NULL로 설정,
+	- *ptrHead 가 rest 를 가리키도록 함
+	*/
+	ListNode *first, *rest;
+	first = *ptrHead, rest = (*ptrHead)->next;
+
+	if (first == NULL || rest == NULL)
+		return;
+	else
+		RecursiveReverse(&rest);
+
+	first->next->next = first;
+	first->next = NULL;	
+	*ptrHead = rest;
+	
+	return;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
