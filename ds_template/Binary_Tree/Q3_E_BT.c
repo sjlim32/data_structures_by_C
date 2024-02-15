@@ -101,7 +101,21 @@ int main()
 int countOneChildNodes(BTNode *node)
 
 {
-    /* add your code here */
+  /* add your code here */
+  /*
+  if : 조건이 null인 경우 0을 반환합니다.
+  else if : 하위 조건이 단 하나만 있는 경우, 왼쪽 값에 오른쪽 값에 1을 더한 값을 반환합니다.
+  else : 그 외의 경우에는 왼쪽 값에 오른쪽 값을 더한 값을 반환합니다.
+  */
+  if (node == NULL)
+    return 0;
+  else 
+  {
+    if ((node->left == NULL) ^ (node->right == NULL))
+      return 1 + countOneChildNodes(node->left) + countOneChildNodes(node->right);
+    else
+      return countOneChildNodes(node->left) + countOneChildNodes(node->right);
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////

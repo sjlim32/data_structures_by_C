@@ -103,6 +103,23 @@ int main()
 int smallestValue(BTNode *node)
 {
 	/* add your code here */
+  #define MAX_INT 1000000
+  if (node == NULL)
+    return MAX_INT;
+  
+  else
+  {
+    int leaf_min = MAX_INT, min = node->item;
+
+    leaf_min = (smallestValue(node->left) < smallestValue(node->right)) 
+    ? smallestValue(node->left) 
+    : smallestValue(node->right);
+    
+    return min = (min < leaf_min) ? min : leaf_min;
+
+
+  }
+  
 }
 
 //////////////////////////////////////////////////////////////////////////////////
